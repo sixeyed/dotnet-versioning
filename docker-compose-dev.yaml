@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  core-api:
+    image: core-api/core-api:dev
+    
+  job-cleanup:
+    image: core-api/job-cleanup:dev
+    
+  core-api-redis-subscriber:
+    image: core-api/redis-subscriber:dev

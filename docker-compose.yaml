@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  versioned-api:
+    image: ${REGISTRY:-dockerhub.io}/sixeyed/versioned-api:${RELEASE:-21.04}-${BUILD_NUMBER:-0}
+    build:
+      context: .
+      dockerfile: docker/versioned-api/Dockerfile
+      args:
+        BUILD_VERSION: ${RELEASE:-21.04}.${BUILD_NUMBER:-0}
+        BUILD_TAG: ${GITHUB_WORKFLOW:-local}-${BUILD_NUMBER:-0}-${GITHUB_REF:-local}
+        COMMIT_SHA: ${GITHUB_SHA:-local}
